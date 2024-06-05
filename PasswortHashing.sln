@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswortHashing", "PasswortHashing.csproj", "{97CE845F-223F-4D65-BB29-3682235B8471}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97CE845F-223F-4D65-BB29-3682235B8471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97CE845F-223F-4D65-BB29-3682235B8471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97CE845F-223F-4D65-BB29-3682235B8471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97CE845F-223F-4D65-BB29-3682235B8471}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14D66D23-1DCD-4D99-AEAE-D9CD1961E737}
+	EndGlobalSection
+EndGlobal
