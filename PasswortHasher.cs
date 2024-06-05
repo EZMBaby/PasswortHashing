@@ -33,16 +33,16 @@ namespace PasswortHashing
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[SaltSize1]);
 
             // Erstelle den Hash
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations);
-            var hash = pbkdf2.GetBytes(HashSize1);
+            Rfc2898DeriveBytes passwordBasedKeyDerivationFunc2 = new Rfc2898DeriveBytes(password, salt, iterations);
+            byte[] hash = passwordBasedKeyDerivationFunc2.GetBytes(HashSize1);
 
             // Salt und Hash kombinieren
-            var hashBytes = new byte[SaltSize1 + HashSize1];
+            byte[] hashBytes = new byte[SaltSize1 + HashSize1];
             Array.Copy(salt, 0, hashBytes, 0, SaltSize1);
             Array.Copy(hash, 0, hashBytes, SaltSize1, HashSize1);
 
             // Zu base64 konvertieren
-            var base64Hash = Convert.ToBase64String(hashBytes);
+            string base64Hash = Convert.ToBase64String(hashBytes);
 
             // Hash mit extra Informationen Formatieren
             return string.Format($"{HashPrefix}{iterations}${base64Hash}");
@@ -83,23 +83,23 @@ namespace PasswortHashing
             }
 
             // Iterationen und Base64-String extrahieren
-            var splittedHashString = hashedPassword.Replace(HashPrefix, "").Split('$');
-            var iterations = int.Parse(splittedHashString[0]);
-            var base64Hash = splittedHashString[1];
+            string[] splittedHashString = hashedPassword.Replace(HashPrefix, "").Split('$');
+            int iterations = int.Parse(splittedHashString[0]);
+            string base64Hash = splittedHashString[1];
 
             // Hash Bytes erhalten
-            var hashBytes = Convert.FromBase64String(base64Hash);
+            byte[] hashBytes = Convert.FromBase64String(base64Hash);
 
             // Salt erhalten
-            var salt = new byte[SaltSize1];
+            byte[] salt = new byte[SaltSize1];
             Array.Copy(hashBytes, 0, salt, 0, SaltSize1);
 
             // Hach mit dem gegebenen Salt erstellen
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, iterations);
-            byte[] hash = pbkdf2.GetBytes(HashSize1);
+            Rfc2898DeriveBytes passwordBasedKeyDerivationFunc2 = new Rfc2898DeriveBytes(password, salt, iterations);
+            byte[] hash = passwordBasedKeyDerivationFunc2.GetBytes(HashSize1);
 
             // Get result
-            for (var i = 0; i < HashSize1; i++)
+            for (int i = 0; i < HashSize1; i++)
             {
                 if (hashBytes[i + SaltSize1] != hash[i])
                 {
